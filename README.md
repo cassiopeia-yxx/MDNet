@@ -11,8 +11,8 @@
 - Other required packages in `requirements.txt`
 ```
 # git clone this repository
-git clone https://github.com/MingyuLiu1/LIEDNet.git
-cd LIEDNet
+git clone https://github.com/cassiopeia-yxx/MDNet.git
+cd MDNet
 
 # create new anaconda env
 conda create -n liednet python=3.10 -y
