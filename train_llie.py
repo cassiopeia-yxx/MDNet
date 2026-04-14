@@ -103,15 +103,15 @@ if Train['RESUME']:
 ## Loss
 l1_loss = L1Loss(loss_weight=1.0, reduction='mean')
 fft_loss = FFTLoss(loss_weight=0.1)
-perceptual_loss = PerceptualLoss(
-    layer_weights={'conv1_2': 1, 'conv2_2': 1, 'conv3_4': 1, 'conv4_4': 1},
-    vgg_type='vgg19',
-    use_input_norm=True,
-    perceptual_weight=0.01,
-    style_weight=0,
-    range_norm=True,
-    criterion='l1'
-).cuda()
+# perceptual_loss = PerceptualLoss(
+#     layer_weights={'conv1_2': 1, 'conv2_2': 1, 'conv3_4': 1, 'conv4_4': 1},
+#     vgg_type='vgg19',
+#     use_input_norm=True,
+#     perceptual_weight=0.01,
+#     style_weight=0,
+#     range_norm=True,
+#     criterion='l1'
+# ).cuda()
 
 ## DataLoaders
 print('==> Loading datasets')
@@ -167,7 +167,7 @@ for epoch in range(start_epoch, OPT['EPOCHS'] + 1):
         restored = model_restored(input_)
 
         # Compute loss
-        loss = l1_loss(restored, target) + perceptual_loss(restored, target)[0] + fft_loss(restored, target)
+        loss = l1_loss(restored, target) + fft_loss(restored, target)
 
         # Back propagation
         loss.backward()
